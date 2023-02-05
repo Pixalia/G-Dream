@@ -9,9 +9,17 @@ public class JournalScript : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     public Image book;
 
+    [SerializeField]
+    private GameObject entryOne;
+
+    [SerializeField]
+    private GameObject entryTwo;
+
     void Start()
     {
         book.enabled = false;
+        entryOne.SetActive(true);
+        entryTwo.SetActive(true);
     }
 
     void Update()
@@ -25,6 +33,8 @@ public class JournalScript : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         book.enabled = false;
+        entryOne.SetActive(false); 
+        entryTwo.SetActive(false);
         Time.timeScale = 1;
     }
 }

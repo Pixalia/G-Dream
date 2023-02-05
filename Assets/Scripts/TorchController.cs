@@ -11,6 +11,9 @@ public class TorchController : MonoBehaviour
     
     public BarScript match;
 
+    [SerializeField]
+    private GameObject fireSprite;
+
     void Start()
     {
         torchLight.enabled = true;
@@ -37,6 +40,14 @@ public class TorchController : MonoBehaviour
         {
             match.reduceGas();
             torchLight.pointLightOuterRadius = 4 * (match.torchGasAmount / 2500f);
+        }
+        if (match.torchGasAmount <= 500) 
+        {
+            fireSprite.SetActive(false);
+        }
+        else if (match.torchGasAmount > 500)
+        {
+            fireSprite.SetActive(true);
         }
     }
 
