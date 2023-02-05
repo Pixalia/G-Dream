@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TorchController : MonoBehaviour
 {
 
     [SerializeField]
     UnityEngine.Rendering.Universal.Light2D torchLight;
-
-    public float torchGas;
-
-    [SerializeField]
-    private GameObject match;
+    
+    public BarScript match;
 
     void Start()
     {
-        torchLight.enabled = false;
-        torchGas = 1.00f;
+        torchLight.enabled = true;
         torchLight.pointLightOuterRadius = 4;
         torchLight.falloffIntensity = 0.4f;
     }
 
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.K) && !(torchLight.enabled))
         {
@@ -32,21 +29,16 @@ public class TorchController : MonoBehaviour
         {
             torchLight.enabled = false;
         }
-        if (match == null)
-        {
-            torchGas = 1.00f;
-        }
-    }
+    }*/
 
     void FixedUpdate()
     {
         if (torchLight.enabled)
         {
-            torchGas -= .000003f;
-            torchLight.pointLightOuterRadius *= torchGas;
+            match.reduceGas();
+            torchLight.pointLightOuterRadius = 4 * (match.torchGasAmount / 2500f);
         }
     }
-
 
 
 }
