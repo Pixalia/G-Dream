@@ -12,20 +12,10 @@ public class ButterflyScript : MonoBehaviour
     private GameObject item;
 
 
-    [SerializeField]
-    private GameObject entryOne;
-
-    [SerializeField]
-    private GameObject entryTwo;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         book.enabled = false;
-        entryOne.SetActive(false);
-        entryTwo.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,20 +29,9 @@ public class ButterflyScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             book.enabled = true;
-
-            if (item.name == "Butterfly")
-            {
-                entryOne.SetActive(true);
-            }
-
-            if (item.name == "Butterfly (1)")
-            {
-                entryTwo.SetActive(true);
-            }
             Destroy(item);
-        } 
+        }
     }
-    
 
     /*void OnCollisionExit2D(Collision2D other)
     {

@@ -24,6 +24,12 @@ public class Move2DScript : MonoBehaviour
     private float jumpingSpeed = 20f;
     private bool rightFace;
 
+    void Start()
+    {
+        
+    }
+
+
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
